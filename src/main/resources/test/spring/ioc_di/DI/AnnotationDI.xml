@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--指定spring ioc 扫描的包
+    resource-pattern：指定扫描的资源-->
+    <context:component-scan base-package="com.ruge.test.spring"
+    >
+    <!--resource-pattern="com.ruge.test.spring.ioc_di.DI.annotationDI/*.class"-->
+        <!--context:exclude-filter 指定排除那些表达式-->
+       <!-- <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"></context:exclude-filter>-->
+       <!-- <context:exclude-filter type="assignable" expression="com.ruge.test.spring.ioc_di.DI.annotationDI.AnnotationController"></context:exclude-filter>-->
+        <!--context:include-filter 指定扫描那些表达式-->
+        <!--<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>-->
+        <!--<context:include-filter type="assignable" expression="com.ruge.test.spring.ioc_di.DI.annotationDI.AnnotationController"/>-->
+
+    </context:component-scan>
+</beans>

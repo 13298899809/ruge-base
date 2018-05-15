@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <!--抽象bean不能被实例化 只能用于继承 用于魔板-->
+    <bean id="abstractBeanRelation" class="com.ruge.test.spring.ioc_di.beanRelation.BeanRelation" abstract="true">
+        <property name="className" value="三年二班"></property>
+        <property name="age" value="19"></property>
+    </bean>
+
+    <!--beanRelationByExtends-->
+    <bean id="beanRelationByExtends1" parent="abstractBeanRelation">
+        <property name="id" value="19"></property>
+        <property name="name" value="谭维维"></property>
+    </bean>
+    <bean id="beanRelationByExtends2" parent="abstractBeanRelation">
+        <property name="id" value="20"></property>
+        <property name="name" value="梁咏琪"></property>
+        <property name="age" value="20"></property>
+    </bean>
+
+    <!--
+    beanRelationByDepends
+    要求在配置bean时，必须管理一个权限，换句话说这个bean依赖于authority这个bean
+    -->
+    <bean id="beanRelationByDepends" depends-on="authority"
+          class="com.ruge.test.spring.ioc_di.beanRelation.BeanRelation">
+        <property name="id" value="19"></property>
+        <property name="name" value="滨崎步"></property>
+        <property name="age" value="19"></property>
+        <property name="className" value="三年二班"></property>
+    </bean>
+    <bean id="authority" class="com.ruge.test.spring.ioc_di.beanRelation.Authority"></bean>
+
+    <bean id="beanRelationByImport" class="com.ruge.test.spring.ioc_di.beanRelation.BeanRelation">
+        <property name="id" value="20"></property>
+        <property name="name" value="孙燕姿"></property>
+        <property name="age" value="19"></property>
+        <property name="className" value="三年二班"></property>
+        <property name="dog" ref="dog"></property>
+    </bean>
+    <bean id="dog" class="com.ruge.test.spring.ioc_di.beanRelation.Dog">
+        <property name="name" value="孙燕姿的小狗狗"></property>
+    </bean>
+    <!--beanRelationByProperties 使用外部属性文件-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:test/spring/ioc_di/beanRelation/db.properties"/>
+    </bean>
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" destroy-method = "close">
+        <property name="username" value="${db.username}"></property>
+        <property name="password" value="${db.password}"></property>
+        <property name="driverClassName" value="${db.driverClassName}" />
+        <property name="url" value="${db.url}"></property>
+    </bean>
+
+</beans>

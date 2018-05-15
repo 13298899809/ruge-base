@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置bean
+        id：在 IOC 容器中必须是唯一的
+        class：全类名
+        -->
+    <bean id="helloWorld" class="com.ruge.test.spring.helloWorld.HelloWorld">
+        <property name="name" value="张三的歌"></property>
+    </bean>
+</beans>

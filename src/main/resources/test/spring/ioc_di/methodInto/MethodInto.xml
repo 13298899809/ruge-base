@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="methodDI"  class="com.ruge.test.spring.di.methodDI.MethodDI">
+        <property name="id" value="15"></property>
+        <property name="name" value="弦子"></property>
+        <property name="age" value="13"></property>
+        <property name="dog" ref="dog"></property>
+    </bean>
+    <bean id="dog" name="dog" class="com.ruge.test.spring.di.methodDI.Dog">
+        <property name="name" value="弦子的第一只可爱的小狗"></property>
+    </bean>
+<!--Spring默认的为所有的bean设置为单例模式，只有当我们特别声明bean的模式时，Spring才会修改对应的bean设置，
+即使存在嵌套关系bean中，外层声明为prototype，其内部在未声明的情况下，仍然是单例的。-->
+    <bean id="methodDIByDisaffinity"  class="com.ruge.test.spring.di.methodDI.MethodDI" scope="prototype">
+        <property name="id" value="15"></property>
+        <property name="name" value="弦子"></property>
+        <property name="age" value="13"></property>
+        <property name="dog" ref="dog1"></property>
+    </bean>
+    <bean id="dog1"  class="com.ruge.test.spring.di.methodDI.Dog">
+        <property name="name" value="弦子的第二只可爱的小狗"></property>
+    </bean>
+</beans>

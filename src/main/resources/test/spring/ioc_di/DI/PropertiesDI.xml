@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <!--属性注入-->
+    <bean id="propertiesDI" name="propertiesDI" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="1"></property>
+        <property name="name" value="刘德华"></property>
+        <property name="age" value="13"></property>
+    </bean>
+    <!--使用property中的ref建立bean与bean之间的外部引用关系-->
+    <bean id="propertiesDIByBean" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="6"></property>
+        <property name="name" value="周华健"></property>
+        <property name="age" value="13"></property>
+        <property name="dog" ref="dog"></property>
+    </bean>
+    <bean id="dog" name="dog" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.Dog">
+        <property name="name" value="一只可爱的小狗"></property>
+    </bean>
+    <!--使用property中的ref建立bean与bean之间的内部引用关系-->
+    <bean id="propertiesDIByPrivateBean" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="7"></property>
+        <property name="name" value="周杰伦"></property>
+        <property name="age" value="13"></property>
+        <property name="dog">
+            <bean class="com.ruge.test.spring.ioc_di.DI.propertiesDI.Dog">
+                <property name="name" value="我是一只只 属于周杰伦的小狗狗"></property>
+            </bean>
+        </property>
+    </bean>
+    <!--null注入-->
+    <bean id="propertiesDIByNullBean" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="8"></property>
+        <property name="name" value="张靓颖"></property>
+        <property name="age" value="13"></property>
+        <property name="dog">
+            <null></null>
+        </property>
+    </bean>
+    <!--级联注入-->
+    <bean id="propertiesDIByCascadingBean" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="9"></property>
+        <property name="name" value="田馥甄"></property>
+        <property name="age" value="13"></property>
+        <property name="dog.name" value="田馥甄的小狗狗">
+        </property>
+    </bean>
+    <!--集合注入-->
+    <bean id="propertiesDIByCollectionBean" class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="10"></property>
+        <property name="name" value="刘若英"></property>
+        <property name="age" value="13"></property>
+        <property name="dog.name" value="刘若英的小狗狗"></property>
+        <property name="hobbyies">
+            <list>
+                <value>唱歌</value>
+                <value>跳舞</value>
+                <value>打游戏</value>
+            </list>
+        </property>
+        <property name="loves">
+            <set>
+                <value>张靓颖</value>
+                <value>田馥甄</value>
+                <value>张韶涵</value>
+            </set>
+        </property>
+        <property name="works">
+            <map>
+                <entry key="上午" value="写代码"></entry>
+                <entry key="中午" value="吃饭"></entry>
+                <entry key="下午" value="学习"></entry>
+            </map>
+        </property>
+
+        <property name="property">
+            <props>
+                <prop key="username">root</prop>
+                <prop key="password">root</prop>
+            </props>
+        </property>
+    </bean>
+
+    <bean id="propertiesDIByOutSideCollectionBean"  class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI">
+        <property name="id" value="1"></property>
+        <property name="name" value="张含韵"></property>
+        <property name="age" value="13"></property>
+        <property name="hobbyies" ref="lists"></property>
+    </bean>
+    <util:list id="lists">
+        <value>吃饭</value>
+        <value>睡觉</value>
+        <value>打豆豆</value>
+    </util:list>
+
+    <bean id="propertiesDIByP"  class="com.ruge.test.spring.ioc_di.DI.propertiesDI.PropertiesDI"
+          p:id="25" p:name="山口百惠">
+    </bean>
+</beans>

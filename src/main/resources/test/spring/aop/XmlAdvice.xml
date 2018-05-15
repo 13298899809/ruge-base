@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+        <!--配置bean-->
+        <bean id="mathServer" class="com.ruge.test.spring.aop.MathServiceImpl"></bean>
+        <!--配置切面bean-->
+        <bean id="loggingAspect" class="com.ruge.test.spring.aop.advice.XmlLoggingAspect"></bean>
+    <!--配置AOP-->
+        <aop:config>
+                <!--配置切点表达式-->
+            <aop:pointcut id="pointCut" expression="execution(* com.ruge.test.spring.aop.*.*(..))"></aop:pointcut>
+            <!--配置切面及通知-->
+            <aop:aspect ref="loggingAspect" order="1">
+                <aop:before method="doBefore" pointcut-ref="pointCut"></aop:before>
+                <aop:after method="doAfter" pointcut-ref="pointCut"></aop:after>
+                <aop:after-returning method="AfterReturning" pointcut-ref="pointCut" returning="result"></aop:after-returning>
+                <aop:after-throwing method="AfterThrowing" pointcut-ref="pointCut" throwing="exception"></aop:after-throwing>
+                <aop:around method="Around" pointcut-ref="pointCut"></aop:around>
+            </aop:aspect>
+        </aop:config>
+</beans>

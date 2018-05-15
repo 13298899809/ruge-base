@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--配置bean的作用域
+    scope="singleton" 默认值 在容器的生命周期内 只创建一个bean 单例的
+    scope="prototype" 原型的 容器初始化时不创建bean的实例 每次请求创建一个新的实例并返回
+    -->
+    <bean id="beanRange" class="com.ruge.test.spring.ioc_di.beanRange.BeanRange" scope="singleton">
+        <property name="id" value="21"></property>
+        <property name="name" value="孙燕姿"></property>
+        <property name="age" value="21"></property>
+    </bean>
+</beans>

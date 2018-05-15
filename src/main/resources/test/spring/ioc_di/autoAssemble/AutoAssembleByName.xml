@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+       default-autowire="byName">
+    <!--根据bean的名字和setter风格的属性名进行自动装配-->
+    <bean id="AutoDI" class="com.ruge.test.spring.ioc_di.autoAssemble.AutoAssemble">
+        <property name="id" value="11"></property>
+        <property name="name" value="蔡依林"></property>
+        <property name="age" value="13"></property>
+    </bean>
+    <bean id="dog" name="dog" class="com.ruge.test.spring.ioc_di.autoAssemble.AutoAssemble">
+        <property name="name" value="第一只可爱的小狗"></property>
+    </bean>
+    <bean id="dog2" name="dog2" class="com.ruge.test.spring.ioc_di.autoAssemble.Dog">
+        <property name="name" value="第二只可爱的小狗"></property>
+    </bean>
+</beans>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="methodReplace"  class="com.ruge.test.spring.di.methodDI.MethodReplace1">
+        <property name="id" value="16"></property>
+        <property name="name" value="梁静茹"></property>
+        <property name="age" value="13"></property>
+        <replaced-method name="getDog" replacer="methodReplace2"></replaced-method>
+    </bean>
+<bean id="methodReplace2" class="com.ruge.test.spring.di.methodDI.MethodReplace2"></bean>
+</beans>
