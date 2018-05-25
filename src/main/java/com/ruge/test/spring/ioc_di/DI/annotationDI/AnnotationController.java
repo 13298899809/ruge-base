@@ -3,7 +3,6 @@ package com.ruge.test.spring.ioc_di.DI.annotationDI;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
-import javax.annotation.Resource;
 
 /**
  * 创建人 ：爱丽丝、如歌
