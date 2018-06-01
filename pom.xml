@@ -84,9 +84,14 @@
         <dependency>
             <groupId>org.apache.shiro</groupId>
             <artifactId>shiro-core</artifactId>
-            <version>1.4.0</version>
+            <version>1.3.2</version>
         </dependency>
-
+        <!-- https://mvnrepository.com/artifact/org.apache.shiro/shiro-web -->
+        <dependency>
+            <groupId>org.apache.shiro</groupId>
+            <artifactId>shiro-web</artifactId>
+            <version>1.3.2</version>
+        </dependency>
         <!--支持servlet源生的请求-->
         <dependency>
             <groupId>javax.servlet</groupId>
@@ -100,7 +105,6 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
-
 
         <dependency>
             <groupId>org.projectlombok</groupId>

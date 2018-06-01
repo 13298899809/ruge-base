@@ -1,6 +1,5 @@
-package com.ruge.test.poi.excel.xls_2003;
+package com.ruge.test.报表.poi.excel.xls_2003;
 
-import org.apache.poi.hpsf.DocumentSummaryInformation;
 import org.apache.poi.hssf.extractor.ExcelExtractor;
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -12,8 +11,6 @@ import org.apache.poi.ss.usermodel.*;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * @author 爱丽丝、如歌

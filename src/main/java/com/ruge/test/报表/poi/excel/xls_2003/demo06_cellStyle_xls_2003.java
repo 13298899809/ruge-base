@@ -1,13 +1,10 @@
-package com.ruge.test.poi.excel.xls_2003;
+package com.ruge.test.报表.poi.excel.xls_2003;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.ss.util.CellRangeAddress;
 import org.junit.Test;
 
 import java.io.*;
-import java.util.Calendar;
-import java.util.Date;
 
 /**
  * @author 爱丽丝、如歌
