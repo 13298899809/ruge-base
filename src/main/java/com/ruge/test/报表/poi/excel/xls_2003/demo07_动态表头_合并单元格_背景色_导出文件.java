@@ -1,10 +1,10 @@
 package com.ruge.test.报表.poi.excel.xls_2003;
 
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -19,13 +19,35 @@ import java.util.List;
  * 创建时间 ：2018-05-30  19:38
  * 描述 ：动态生成的表头
  */
-public class demo07_动态表头_导出文件 {
+public class demo07_动态表头_合并单元格_背景色_导出文件 {
     @Test
     public void test1(){
         String [] titleText  = {"姓名","性别","年龄","电话号"};
         Workbook wb = new HSSFWorkbook();
         Sheet sheet = wb.createSheet();
-        Row row = sheet.createRow(0);
+        /**
+         * 创建表头样式
+         * 设置背景颜色
+         * 橙色“前景”，前景是填充前景而不是字体颜色。
+         */
+        CellStyle cellStyleTitle = wb.createCellStyle();
+        cellStyleTitle.setFillForegroundColor(IndexedColors.ORANGE.getIndex());
+        cellStyleTitle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+        /**
+         * 合并单元格
+         */
+        sheet.addMergedRegion(new CellRangeAddress(0,0,0,4 ));
+        /**
+         * 标题
+         */
+        Row row_title = sheet.createRow(0);
+        Cell cell_title = row_title.createCell(0);
+        cell_title.setCellValue("demo07_动态表头_合并单元格_背景色_导出文件");
+        cell_title.setCellStyle(cellStyleTitle);
+        /**
+         * 第一列表头
+         */
+        Row row = sheet.createRow(1);
         List<Person> list = new ArrayList<>();
         for (int i = 0; i <10 ; i++) {
             String name = "张"+i;
@@ -34,11 +56,11 @@ public class demo07_动态表头_导出文件 {
             String phone = "1329889980"+i;
            list.add(new Person(name,age,sex,phone));
         }
-        for (int i = 0; i <titleText.length ; i++) {
+        for (int i = 1; i <titleText.length ; i++) {
             Cell cell = row.createCell(i);
             cell.setCellValue(titleText[i]);
         }
-        for (int i = 1; i <5 ; i++) {
+        for (int i = 2; i <5 ; i++) {
             row = sheet.createRow(i);
             Cell cell0 = row.createCell(0);
             Cell cell1 = row.createCell(1);
