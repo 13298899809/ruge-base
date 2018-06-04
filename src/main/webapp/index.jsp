@@ -23,5 +23,7 @@
 <a href="/springmvc/jsonInit.do">Json测试</a>
 <br><br>
 <a href="/springmvc/fileInit.do">文件操作测试</a>
+<br><br>
+<a href="/springmvc/jfreeInit.do"> jfreechart报表</a>
 </body>
 </html>

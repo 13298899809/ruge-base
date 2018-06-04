@@ -200,4 +200,11 @@ public class ShiroTest {
 
         subject.logout();
     }
+    @Test
+    public void test(){
+        int a = Integer.MAX_VALUE;
+        System.out.println(a);
+        a=a+1;
+        System.out.println(a);
+    }
 }

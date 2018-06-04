@@ -1,4 +1,4 @@
-package com.ruge.test.报表.poi.word;
+package com.ruge.test.springMVC.报表.poi.word;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xwpf.model.XWPFHeaderFooterPolicy;
