@@ -26,8 +26,25 @@
         <servlet-name>DisplayChart</servlet-name>
         <url-pattern>/DisplayChart</url-pattern>
     </servlet-mapping>
+    <!--集成Ureport-->
+
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/context.xml</param-value>
+    </context-param>
 
 
+    <servlet>
+        <servlet-name>ureportServlet</servlet-name>
+        <servlet-class>com.bstek.ureport.console.UReportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ureportServlet</servlet-name>
+        <url-pattern>/ureport/*</url-pattern>
+    </servlet-mapping>
 
     <!-- Spring MVC配置 -->
     <!-- ====================================== -->

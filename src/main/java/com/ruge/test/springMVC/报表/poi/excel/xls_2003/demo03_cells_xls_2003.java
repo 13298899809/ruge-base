@@ -2,6 +2,7 @@ package com.ruge.test.springMVC.报表.poi.excel.xls_2003;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -23,29 +24,32 @@ public class demo03_cells_xls_2003 {
          * 创建excel 2003的工作簿
          */
         Workbook wb = new HSSFWorkbook();
+        String showType = "1";
         /**
          * 创建sheet页面
          */
-        Sheet sheet1 = wb.createSheet("手动创建的第一个sheet页面");
-        Sheet sheet2 = wb.createSheet("手动创建的第二个sheet页面");
-        /**
-         * 创建一行并在其中放置一些单元格。行基于0。
-         */
-        Row row = sheet1.createRow(0);
-        /**
-         * 创建一个单元格 并给第一个单元格赋值(方式一)
-         */
-        Cell cell = row.createCell(0);
-        cell.setCellValue("谁在悬崖沏一壶茶");
-        /**
-         * 创建一个单元格 并给第一个单元格赋值(方式二)
-         */
-        row.createCell(1).setCellValue(new Date());
-        row.createCell(2).setCellValue(Calendar.getInstance());
-        row.createCell(3).setCellValue("a string");
-        row.createCell(4).setCellValue(true);
-        row.createCell(5).setCellType(CellType.ERROR);
-        row.createCell(6).setCellValue(1.1);
+        Sheet sheet2 = wb.createSheet("手动创建的第一个sheet页面");
+
+        Row row2 = sheet2.createRow(0);
+        Cell cell2 = row2.createCell(0);
+        cell2.setCellValue("展示类型");
+        row2.createCell(1).setCellValue(showType);
+
+        sheet2.setColumnWidth(1,5000);
+        Row row3 = sheet2.createRow(1);
+        Cell cell1 =  row3.createCell(0);
+        Cell cell3 =  row3.createCell(1);
+        cell1.setCellValue("说明");
+        cell3.setCellValue("展示类型列：\n 0:表示系统间；\n 1:表示系统批量间\n 默认：0 \n");
+
+        CellStyle cs = wb.createCellStyle();
+        cs.setWrapText(true);
+        cell3.setCellStyle(cs);
+
+        row3.setHeightInPoints((4*sheet2.getDefaultRowHeightInPoints()));
+
+        sheet2.autoSizeColumn(2);
+
         try  (OutputStream fileOut = new FileOutputStream("F:/excel2003.xls")) {
             wb.write(fileOut);
         } catch (FileNotFoundException e) {

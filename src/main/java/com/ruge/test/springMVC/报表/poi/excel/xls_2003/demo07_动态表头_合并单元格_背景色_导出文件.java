@@ -5,6 +5,9 @@ import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
+import org.apache.poi.xssf.usermodel.XSSFCellStyle;
+import org.apache.poi.xssf.usermodel.XSSFColor;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.junit.Test;
 
 import java.io.FileNotFoundException;
@@ -23,20 +26,24 @@ public class demo07_动态表头_合并单元格_背景色_导出文件 {
     @Test
     public void test1(){
         String [] titleText  = {"姓名","性别","年龄","电话号"};
-        Workbook wb = new HSSFWorkbook();
+        XSSFWorkbook wb = new XSSFWorkbook();
         Sheet sheet = wb.createSheet();
         /**
          * 创建表头样式
          * 设置背景颜色
          * 橙色“前景”，前景是填充前景而不是字体颜色。
          */
-        CellStyle cellStyleTitle = wb.createCellStyle();
-        cellStyleTitle.setFillForegroundColor(IndexedColors.ORANGE.getIndex());
+     //   CellStyle cellStyleTitle = wb.createCellStyle();
+    //    cellStyleTitle.setFillForegroundColor(new XSSFColor(new java.awt.Color(128, 0, 128)));
+     //   cellStyleTitle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
+
+        XSSFCellStyle cellStyleTitle = wb.createCellStyle();
+        cellStyleTitle.setFillForegroundColor(new XSSFColor(new java.awt.Color(197, 217, 241)));
         cellStyleTitle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
         /**
          * 合并单元格
          */
-        sheet.addMergedRegion(new CellRangeAddress(0,0,0,4 ));
+        sheet.addMergedRegion(new CellRangeAddress(0,0,0,3 ));
         /**
          * 标题
          */

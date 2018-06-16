@@ -13,7 +13,7 @@
 <body>
 <form action="fileUpload.do" method="post" enctype="multipart/form-data">
     <input type="text" name="name"><br>
-    <input type="file" name="image"><br>
+    <input type="file" name="image" onchange="showImg(this)"><br>
     <input type="submit" value="上传">
 </form>
 
@@ -23,5 +23,18 @@
     <input type="file" name="image"><br>
     <input type="submit" value="多个上传">
 </form>
+<div id="img"></div>
+<script>
+    function showImg(file) {
+        var prevDiv = document.getElementById('img');
+        if (file.files && file.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (evt) {
+                prevDiv.innerHTML = '<img src="' + evt.target.result + '" />';
+            }
+            reader.readAsDataURL(file.files[0]);
+        }
+    }
+</script>
 </body>
 </html>
