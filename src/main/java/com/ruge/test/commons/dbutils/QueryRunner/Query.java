@@ -16,11 +16,17 @@ import java.util.Map;
 
 /**
  * 爱丽丝、如歌  创建于 2018/6/15 20:14
- * 说明:  TODO
+ * 说明:  commons-dbutils 查询工具类
  */
 public class Query {
     /**
      * 返回对象list集合
+     * BeanHandler: 查询返回单个对象
+     * BeanListHandler: 查询返回list集合，集合元素是指定的对象
+     * ArrayHandler, 查询返回结果记录的第一行，封装对对象数组, 即返回：Object[]
+     * ArrayListHandler, 把查询的每一行都封装为对象数组，再添加到list集合中
+     * ScalarHandler 查询返回结果记录的第一行的第一列  (在聚合函数统计的时候用)
+     * MapHandler  查询返回结果的第一条记录封装为map
      */
     @Test
     public void test1() throws SQLException, ClassNotFoundException {
