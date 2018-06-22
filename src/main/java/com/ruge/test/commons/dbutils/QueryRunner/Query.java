@@ -58,7 +58,7 @@ public class Query {
         List<SysUser> query = runner.query(conn, "select * from sys_user where 1=1 "+sqlWhere, new BeanListHandler<SysUser>(SysUser.class));
         for (SysUser s : query
                 ) {
-            System.out.println(s);
+            System.out.println(s.getUser_Id());
         }
         DbUtils.close(conn);
     }

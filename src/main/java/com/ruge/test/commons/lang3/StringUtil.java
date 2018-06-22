@@ -33,6 +33,10 @@ public class StringUtil {
         System.out.println(StringUtils.isBlank("\n\t"));//true
         System.out.println(StringUtils.isBlank("abc"));//false
         System.out.println(StringUtils.isBlank(" abc "));//false
+        System.out.println(StringUtils.isBlank(" abc "));//false
+        System.out.println(StringUtils.isNoneBlank(" abc "));//false
+        System.out.println(StringUtils.isNotBlank(" abc "));//false
+
     }
 
     @Test
