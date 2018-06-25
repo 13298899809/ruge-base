@@ -133,4 +133,9 @@ public class StringUtil {
         // 重复30次
         System.out.println(StringUtils.repeat("=", 30));
     }
+    @Test
+    public void test12(){
+        String reverse = StringUtils.reverse("123456");
+        System.out.println(reverse);
+    }
 }
